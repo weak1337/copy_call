@@ -135,7 +135,7 @@ int main() {
 			break;
 		}
 		case ZYDIS_MNEMONIC_CALL: {
-			if (inst->length == 5) { //mov relative rip
+			if (inst->length == 5) { //call relative rip
 				signed int dst = *(signed int*)(inst->raw_data + 1);
 				uintptr_t original_destination = inst->runtimeaddy + dst + inst->length;
 				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;
