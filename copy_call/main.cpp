@@ -111,7 +111,7 @@ int main() {
 			if (inst->length == 7) { //cmp relative rip
 				signed int dst = *(signed int*)(inst->raw_data + 3);
 				uintptr_t original_destination = inst->runtimeaddy + dst + inst->length;
-				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;
+				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length; //Todo check if allocation is > func or < func
 				*(signed int*)((uintptr_t)new_base + current_offset + 3) = new_destination;
 			}
 			break;
@@ -120,7 +120,7 @@ int main() {
 			if (inst->length == 9) { //cmpxchg relative rip
 				signed int dst = *(signed int*)(inst->raw_data + 5);
 				uintptr_t original_destination = inst->runtimeaddy + dst + inst->length;
-				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;
+				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;//Todo check if allocation is > func or < func
 				*(signed int*)((uintptr_t)new_base + current_offset + 5) = new_destination;
 			}
 			break;
@@ -129,7 +129,7 @@ int main() {
 			if (inst->length == 7) { //mov relative rip
 				signed int dst = *(signed int*)(inst->raw_data + 3);
 				uintptr_t original_destination = inst->runtimeaddy + dst + inst->length;
-				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;
+				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;//Todo check if allocation is > func or < func
 				*(signed int*)((uintptr_t)new_base + current_offset + 3) = new_destination;
 			}
 			break;
@@ -138,7 +138,7 @@ int main() {
 			if (inst->length == 5) { //mov relative rip
 				signed int dst = *(signed int*)(inst->raw_data + 1);
 				uintptr_t original_destination = inst->runtimeaddy + dst + inst->length;
-				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;
+				signed int new_destination = original_destination - (uintptr_t)new_base - current_offset - inst->length;//Todo check if allocation is > func or < func
 				*(signed int*)((uintptr_t)new_base + current_offset + 1) = new_destination;
 			}
 			break;
